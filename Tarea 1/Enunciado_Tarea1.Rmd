@@ -95,7 +95,7 @@ Suponga que esta estudiando la diferencia en los sueldos de las personas que viv
 #### **Pregunta 5:**
 En base al mismo dataset de sueldos para las regiones de Santiago y Rancagua, le comentan que existe un error en los datos y que estos deben ser modificados aumentando un 10% el valor original y sumando $15.000$ a cada uno de los datos. ¿Como se ve afectada la media, mediana y desviación estándar con esta modificación?. Explique a través de ecuaciones el cambio que experimentan las métricas de resumen respecto al valor original, considere para el caso de la media $\bar{X}_{old} = \dfrac{1}{m} \sum^{m}_{i=1} x_i$ y $sd_{old} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(x_i-\bar{x})^{2}}$ para la desviación estándar.
 
->$\bar{X}_{new} = \dfrac{1}{m} \sum^{m}_{i=1} x_i$ y $sd_{new} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(x_i-\bar{x})^{2}}$ 
+>$\bar{X}_{new} = \dfrac{1}{m} \sum^{m}_{i=1} ((x_i * 1.1) + 15000) $, la mediana sera la misma, pero con un 10% más y aumentada en 15000 y $sd_{new} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(((x_i * 1.1) + 15000)-\bar{x})^{2}}$ 
 
 #### **Pregunta 6:**
 Suponga que debe responder un examen sorpresa de 10 preguntas, con 5 alternativas por cada pregunta. ¿Cual es la probabilidad de obtener mas de 5 alternativas correctas si responde de forma aleatoria todo el examen?.
