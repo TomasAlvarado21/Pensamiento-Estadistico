@@ -95,19 +95,20 @@ Suponga que esta estudiando la diferencia en los sueldos de las personas que viv
 #### **Pregunta 5:**
 En base al mismo dataset de sueldos para las regiones de Santiago y Rancagua, le comentan que existe un error en los datos y que estos deben ser modificados aumentando un 10% el valor original y sumando $15.000$ a cada uno de los datos. ¿Como se ve afectada la media, mediana y desviación estándar con esta modificación?. Explique a través de ecuaciones el cambio que experimentan las métricas de resumen respecto al valor original, considere para el caso de la media $\bar{X}_{old} = \dfrac{1}{m} \sum^{m}_{i=1} x_i$ y $sd_{old} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(x_i-\bar{x})^{2}}$ para la desviación estándar.
 
->$\bar{X}_{new} = \dfrac{1}{m} \sum^{m}_{i=1} ((x_i * 1.1) + 15000) $, la mediana sera la misma, pero con un 10% más y aumentada en 15000 y $sd_{new} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(((x_i * 1.1) + 15000)-\bar{x})^{2}}$ 
+>$\bar{X}_{new} = \dfrac{1}{m} \sum^{m}_{i=1} ((x_i * 1.1) + 15000) $, la mediana sera la misma, pero con un 10% más y aumentada en 15000 y $sd_{new} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(((x_i * 1.1) + 15000)-\bar{x})^{2}}$ Podemos ver de acuerdo a estas formulas que el promedio va a cambiar, quedando en el promedio antiguo por $1.1 + 15000$. Por otro lado en la desviación estandar esta va a aumentar en $1.1$ pero no se va a ver afectada por los $15000$. Por último, la mediana va a ser el mismo valor pero por $1.1 +15000$.
 
 #### **Pregunta 6:**
 Suponga que debe responder un examen sorpresa de 10 preguntas, con 5 alternativas por cada pregunta. ¿Cual es la probabilidad de obtener mas de 5 alternativas correctas si responde de forma aleatoria todo el examen?.
 
 **Nota:** Puede resolver el ejercicio desarrollándolo a mano o utilizando código en R. 
 
-> Respuesta Aquí
+> ${10 \choose 1} (\frac{1}{5})^1(\frac{1}{5})^9  -  {10 \choose 2} (\frac{1}{5})^2(\frac{1}{5})^8  -  {10 \choose 3} (\frac{1}{5})^3(\frac{1}{5})^7  -  {10 \choose 4} (\frac{1}{5})^4(\frac{1}{5})^6$
 
 #### **Pregunta 7:**
 Supongamos que el 10% de los alumnos del curso utilizan Mac, el 60% utiliza Windows y el 30% utiliza Linux. Supongamos que el 50% de los usuarios de Mac, el 78% de los usuarios de Windows y el 20% de los usuarios de Linux han sucumbido bajo un terrible virus. Al seleccionar una persona al azar nos enteramos de que su sistema está infectado por el virus. ¿Cuál es la probabilidad de que sea un alumno con Windows?.
 
-> Respuesta Aquí
+> Este problema es de probabilidad condicionada, entonces tenemos que ver la probabilidad de que sea Windows dado que esta infectado.
+  $P(W|I) = (\frac {P(W \cap I)}{P(I)}) = 0.8096$ 
 
 #### **Pregunta 8:**
 Señale si las siguientes declaraciones son verdaderas o falsas respecto a las variables aleatorias, en caso de ser falsa justifique su respuesta:
@@ -117,7 +118,10 @@ Señale si las siguientes declaraciones son verdaderas o falsas respecto a las v
 - [ ] La CDF puede ser representada como la integral de la PDF y PMF.
 - [ ] Una CDF es definida para todo x, continua hacia la derecha y no es decreciente.
 
-> Respuesta Aquí
+> 1. Falso, puesto que en un caso continuo el valor de P(X=x) es siempre 0 al contrario de un caso discreto ya que ahí si pueden existir casos en donde P(X=x) >0 pero nuevamente no siempre
+2. Verdadero puesto que el valor maximo es 1 es cuando se pregunta por la probabilidad del universo entero, y el area debajo de la curva es exactamente la probabilidad por lo tanto tambien es 1 cuando se calcula el area total
+3. Verdadero puesto que el area bajo de la curva (caso continuo), lineas (caso discreto) es justamente la probabilidad acumulada hasta X y eso justamente es la integral
+4. False porque en el caso de una PMF su integral no es continua, por lo tanto su CDF tampoco lo es, ademas que no esta definido en todos los reales, puesto que tiene limites pero si efectivamente no es decreciente
 
 #### **Pregunta 9:**
 Una famosa fabrica de dulces señala que solo el $5\%$ de sus dulces contienen menos de $350$ gramos. Si los dulces elaborados por la fabrica distribuyen de forma normal, con media $\mu$ y desviación estándar $11.2$. Responda las siguientes preguntas:
@@ -127,7 +131,8 @@ Una famosa fabrica de dulces señala que solo el $5\%$ de sus dulces contienen m
 
 **Nota:** Puede ser útil https://www.statskingdom.com/z_table.html
 
-> Respuesta Aquí
+> 368 es la media
+0.0275 es el porcentaje
 
 ---
 
