@@ -199,8 +199,12 @@ Realice el experimento de lanzar una moneda cargada 1000 veces y observe el comp
 
 ```{r eval=TRUE}
 # Simular lanzamientos
+
 for (lanzamientos in 1:1000) {
-  
+  #cara = 0
+  #sello = 1
+  throws <- rbinom(n=lanzamientos,size=2,prob=0.2)
+
 }
 
 # Gráfico de la convergencia
@@ -288,8 +292,16 @@ Para la **segunda parte** de este experimento, con las funciones ya creadas, pro
 ```{r eval=FALSE}
 # Función para obtener el desarrollo de las apuestas
 ruina <- function(fondos = 100, apuesta = 5){
+  vec_fondos <- fondos
   while (0<fondos & fondos<200) {
-    
+    x <- sample(1:19, 1)
+    if (x > 9){
+      fondos = fondos - apuesta
+    }
+    else{
+      fondos = fondos + apuesta
+    }
+    vec_fondos <- append(vec_fondos, fondos)
   }
   return(vec_fondos) # Devuelve un vector con el desarrollo de los fondos
 }
