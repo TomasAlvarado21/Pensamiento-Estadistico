@@ -168,7 +168,12 @@ En base al dataset propuesto realice un análisis exploratorio de los datos (EDA
 
 **Respuesta**
 
----
+summary(hearth_database)
+quantile(hearth_database$age)
+mean(hearth_database$trestbps)
+mean(hearth_database$thalach)
+mean(hearth_database$oldpeak)
+
 
 ### Pregunta 2: Teorema Central del Limite
 
