@@ -167,7 +167,7 @@ En base al dataset propuesto realice un análisis exploratorio de los datos (EDA
 - [ ] Visualice a través de un histograma como distribuyen las variables respecto a los TARGET.
 
 **Respuesta**
-
+hearth_database <- read.csv("~/GitHub/Pensamiento-Estadistico/Tarea 1/hearth_database.csv")
 summary(hearth_database)
 quantile(hearth_database$age)
 mean(hearth_database$trestbps)
