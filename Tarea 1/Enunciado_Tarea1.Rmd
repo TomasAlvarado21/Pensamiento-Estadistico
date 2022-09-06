@@ -326,16 +326,40 @@ Se le aconseja que para simular los lanzamientos de dados utilice la función `s
 # Primer grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
 
-D1 = sample(1:6,1)
-D2 = sample(1:6,1)
+
 
 L_A = c(1, 2, 6) # Lanzamientos favorables A = c(1, 2, 6)
 L_B = c(1, 2, 3, 4) # Lanzamientos favorables B = c(1, 2, 3, 4)
 L_AB = c(1, 2)# Lanzamientos favorables AB = c(1, 2)
 
-if (grep(D2,L_B)){
-  return("hola")
+PA <- NULL
+PB <- NULL
+PAB <- NULL
+
+probAB <- NULL
+multProb <- NULL
+for (lanzamientos in 1:N_lan) {
+  D1 = sample(1:6,1)
+  D2 = sample(1:6,1)
+  if (D1%in%L_A){
+      PA <- append(PA,1)
+  } else{
+      PA <- append(PA,0)
+  }
+  if (D2%in%L_B){
+      PB <- append(PB,1)
+  } else{
+    PB <- append(PB,0)
+  }
+  if (D1%in%L_AB & D2%in%L_AB){
+    PAB <- append(PAB,1)
+  } else{
+    PAB <- append(PAB,0)
+  }
 }
+multProb <- append(multProb, (sum(PA)/length(PA))*(sum(PB)/length(PB)))
+probAB <- append(probAB, sum(PAB)/length(PAB))
+
 ```
 
 ```{r eval=FALSE}
