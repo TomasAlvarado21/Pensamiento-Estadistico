@@ -240,37 +240,50 @@ montyhall <- function(cambiar = TRUE){
   Puertas <- sample(1:3,3)             #Puertas donde la posición que tiene el 3 es el premio
   posicion <- sample(1:3,1)            #Elección del participante.
   if (cambiar == TRUE){
-    elim<-sample(1:2,2)                                 #
-    elim<-elim[which(elim == Puertas[posicion])]
-    puerta_elim = sample(elim,1)
-    new_door <- Puertas[-which(Puertas == puerta_elim)] #eliminaremos el 2 o el 1 del sample ya que no son el premio (seria mostrar la puerta equivocada)
-         
+    elim<-sample(1:2,2)                                 # tomamos las puertas que si podemos eliminar (1 y 2)
+    elim<-elim[which(elim != Puertas[posicion])]       # si nuestra puerta elegida es dentro de esa la sacamos (si elegi el 1, ya no puedo eliminarla)
+    puerta_elim = sample(elim,1)                        # elegimos al azar una de las posibles opciones
+    new_door <- Puertas[which(Puertas != puerta_elim)] #eliminaremos el 2 o el 1 del sample ya que no son el premio (seria mostrar la puerta equivocada)
+    
+    cat(puerta_elim, "\n")
+    cat(new_door, "\n")
+    Eleccion <- new_door[which(new_door != Puertas[posicion])] #eliminamos la opcion original quedandonos con la ultima puerta
   }
-  cat(Puertas,"\n")
-  cat(posicion, "\n")
+  else{
+    Eleccion <- Puertas[posicion]
+  }
+  #cat(Puertas,"\n")
+  #cat(posicion, "\n")
   cat(Puertas[posicion], "\n")
-  cat(elim, "\n")
+  #cat(elim, "\n")
   cat(puerta_elim, "\n")
-  cat(new_door)
+  cat(new_door, "\n")
+  cat(Eleccion, "\n")
   
-  #return(Eleccion) # Retornamos la elección, esta puede que tenga el premio o no
+  return(Eleccion) # Retornamos la elección, esta puede que tenga el premio o no
 }
 
 # Función que simula N juegos
-n_juegos <- function(n = 10 ,cambiar_puerta = TRUE){
+n_juegos <- function(n = 100 ,cambiar_puerta = TRUE){
   evolucion_victoria <- NULL
   eleccion <- NULL
   evolution_porcentage <- NULL
-  for (lanzamientos in 1:1000) {
+  for (lanzamientos in 1:n) {
     #victoria = 1
     #derrota = 0
-    eleccion<- 
-    evolucion_caras <- append(evolucion_caras, throws)
-    evolution_porcentage <- append(evolution_porcentage, sum(evolucion_caras)/length(evolucion_caras))
-
+    eleccion<- montyhall()
+    if (eleccion == 3){
+      evolucion_victoria <- append(evolucion_victoria, 1)
+    }
+    else{
+      evolucion_victoria <- append(evolucion_victoria, 0)
+    }
+    evolution_porcentage <- append(evolution_porcentage, sum(evolucion_victoria)/length(evolucion_victoria))
+    plot(evolution_porcentage, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
 }
 }
 montyhall()
+#n_juegos()
 ```
 
 ---
