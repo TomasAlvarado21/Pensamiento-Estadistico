@@ -274,7 +274,7 @@ montyhall <- function(cambiar = TRUE){
 }
 
 # Función que simula N juegos
-n_juegos <- function(n = 500 ,cambiar_puerta = TRUE){
+n_juegos <- function(n = 1500 ,cambiar_puerta = TRUE){
   evolucion_victoria <- NULL
   eleccion <- NULL
   evolution_porcentage <- NULL
@@ -284,7 +284,7 @@ n_juegos <- function(n = 500 ,cambiar_puerta = TRUE){
   for (lanzamientos in 1:n) {
     #victoria = 1
     #derrota = 0
-    eleccion<- montyhall()
+    eleccion<- montyhall(cambiar = TRUE)
     if (eleccion == 3){
       evolucion_victoria <- append(evolucion_victoria, 1)
     }
@@ -293,8 +293,8 @@ n_juegos <- function(n = 500 ,cambiar_puerta = TRUE){
     }
     evolution_porcentage <- append(evolution_porcentage, sum(evolucion_victoria)/length(evolucion_victoria))
     
-    eleccion_sc<- montyhall(FALSE)
-    if (eleccion == 3){
+    eleccion_sc<- montyhall(cambiar = FALSE)
+    if (eleccion_sc == 3){
       evolucion_victoria_sc <- append(evolucion_victoria_sc, 1)
     }
     else{
@@ -303,7 +303,7 @@ n_juegos <- function(n = 500 ,cambiar_puerta = TRUE){
     evolution_porcentage_sc <- append(evolution_porcentage_sc, sum(evolucion_victoria_sc)/length(evolucion_victoria_sc))
     }
   plot(evolution_porcentage, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
-  plot(evolution_porcentage_sc, type="l", col="blue", xlab="Porcentaje de victorias sin cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
+  plot(evolution_porcentage_sc, type="l", col="red", xlab="Porcentaje de victorias sin cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar sin cambiar de puerta")
 }
 #montyhall()
 n_juegos()
