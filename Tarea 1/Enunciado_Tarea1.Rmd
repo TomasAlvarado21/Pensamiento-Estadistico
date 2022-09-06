@@ -167,13 +167,15 @@ En base al dataset propuesto realice un análisis exploratorio de los datos (EDA
 - [ ] Visualice a través de un histograma como distribuyen las variables respecto a los TARGET.
 
 **Respuesta**
+
+```{r eval=FALSE}
 hearth_database <- read.csv("~/GitHub/Pensamiento-Estadistico/Tarea 1/hearth_database.csv")
 summary(hearth_database)
 quantile(hearth_database$age)
 mean(hearth_database$trestbps)
 mean(hearth_database$thalach)
 mean(hearth_database$oldpeak)
-
+```
 
 ### Pregunta 2: Teorema Central del Limite
 
@@ -323,10 +325,17 @@ Se le aconseja que para simular los lanzamientos de dados utilice la función `s
 ```{r eval=FALSE}
 # Primer grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
-  
-L_A =  # Lanzamientos favorables A = c(1, 2, 6)
-L_B =  # Lanzamientos favorables B = c(1, 2, 3, 4)
-L_AB = # Lanzamientos favorables AB = c(1, 2)
+
+D1 = sample(1:6,1)
+D2 = sample(1:6,1)
+
+L_A = c(1, 2, 6) # Lanzamientos favorables A = c(1, 2, 6)
+L_B = c(1, 2, 3, 4) # Lanzamientos favorables B = c(1, 2, 3, 4)
+L_AB = c(1, 2)# Lanzamientos favorables AB = c(1, 2)
+
+if (grep(D2,L_B)){
+  return("hola")
+}
 ```
 
 ```{r eval=FALSE}
