@@ -324,7 +324,7 @@ Se le aconseja que para simular los lanzamientos de dados utilice la función `s
 
 ```{r eval=FALSE}
 # Primer grupo de eventos
-N_lan = 1000 # Numero de lanzamientos
+N_lan = 50000 # Numero de lanzamientos
 
 
 
@@ -351,14 +351,18 @@ for (lanzamientos in 1:N_lan) {
   } else{
     PB <- append(PB,0)
   }
-  if (D1%in%L_AB & D2%in%L_AB){
+  if (D1%in%L_AB | D2%in%L_AB){
     PAB <- append(PAB,1)
   } else{
     PAB <- append(PAB,0)
   }
+  multProb <- append(multProb, (sum(PA)/length(PA))*(sum(PB)/length(PB)))
+  probAB <- append(probAB, sum(PAB)/length(PAB))
 }
-multProb <- append(multProb, (sum(PA)/length(PA))*(sum(PB)/length(PB)))
-probAB <- append(probAB, sum(PAB)/length(PAB))
+
+  plot(multProb, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
+  plot(probAB, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
+
 
 ```
 
