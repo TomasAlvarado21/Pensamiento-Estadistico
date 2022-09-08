@@ -186,8 +186,8 @@ Pruebe el teorema central del limite aplicando un muestreo de la media en las di
 n <- c(10, 100, 1000, 5000)
 
 # Realizar el muestreo de las distribuciones. //n 10, 100, 1000, 5000
-for(i in 1:n) {
-  rpois(n, lambda = 4)
+for(i in n) {
+  rpois(i, lambda = 4)
 }
 
 # Código para gráficos
@@ -257,7 +257,7 @@ montyhall <- function(cambiar = TRUE){
     
     #cat(puerta_elim, "\n")
     #cat(new_door, "\n")
-    Eleccion <- new_door[which(new_door != Puertas[posicion])] #eliminamos la opcion original quedandonos con la ultima puerta
+    Eleccion <- new_door[which(new_door != Puertas[posicion])] #eliminamos la opcion original quedandonos con la ultima puerta, representaria el cambio de puerta
   }
   else{
     Eleccion <- Puertas[posicion]
