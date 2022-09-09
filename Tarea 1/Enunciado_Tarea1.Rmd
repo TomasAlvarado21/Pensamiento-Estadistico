@@ -168,13 +168,19 @@ En base al dataset propuesto realice un análisis exploratorio de los datos (EDA
 
 **Respuesta**
 
-```{r eval=FALSE}
+```{r}
 hearth_database <- read.csv("~/GitHub/Pensamiento-Estadistico/Tarea 1/hearth_database.csv")
 summary(hearth_database)
 quantile(hearth_database$age)
 mean(hearth_database$trestbps)
 mean(hearth_database$thalach)
 mean(hearth_database$oldpeak)
+install.packages("dplyr")
+library(dplyr)
+
+cor(select_if(is.numeric(hearth_database)))
+
+
 ```
 
 ### Pregunta 2: Teorema Central del Limite
@@ -184,6 +190,7 @@ Pruebe el teorema central del limite aplicando un muestreo de la media en las di
 **Respuesta**
 
 ```{r eval=FALSE}
+
 # Definición de variables o estructuras necesarias para el muestreo.
 n <- c(10, 100, 1000, 5000)
 
@@ -202,70 +209,70 @@ vect_exp_1000 <- vector()
 vect_exp_5000 <- vector()
 
 
-vect_bern_10 <- vector()
-vect_bern_100 <- vector()
-vect_bern_1000 <- vector()
-vect_bern_5000 <- vector()
+vect_norm_10 <- vector()
+vect_norm_100 <- vector()
+vect_norm_1000 <- vector()
+vect_norm_5000 <- vector()
 
 # Realizar el muestreo de las distribuciones. //n 10, 100, 1000, 5000
 for(i in 1:10) {
   x<-rpois(1000, 5)
   expo <- rexp(1000, 5)
-  bern <- rexp(1000, 5)
+  norm <- rnorm(1000, 5)
   
   prom <- mean(x)
   prom_exp <- mean(expo)
-  prom_bern <- mean(bern)
+  prom_norm <- mean(norm)
   
   
   vect_pois_10 <- append(vect_pois_10, prom)
   vect_exp_10 <- append(vect_exp_10, prom_exp)
-  vect_bern_10 <- append(vect_bern_10, prom_bern)
+  vect_norm_10 <- append(vect_norm_10, prom_norm)
 }
 for(i in 1:100) {
   x<-rpois(1000, 5)
   expo <- rexp(1000, 5)
-  bern <- rexp(1000, 5)
+  norm <- rnorm(1000, 5)
   
   
   prom <- mean(x)
   prom_exp <- mean(expo)
-  prom_bern <- mean(bern)
+  prom_norm <- mean(norm)
   
   
   vect_pois_100 <- append(vect_pois_100, prom)
   vect_exp_100 <- append(vect_exp_100, prom_exp)
-  vect_bern_100 <- append(vect_bern_100, prom_bern)
+  vect_norm_100 <- append(vect_norm_100, prom_norm)
 }
 for(i in 1:1000) {
   x<-rpois(1000, 5)
   expo <- rexp(1000, 5)
-  bern <- rexp(1000, 5)
+  norm <- rnorm(1000, 5)
   
 
   prom <- mean(x)
   prom_exp <- mean(expo)
-  prom_bern <- mean(bern)
+  prom_norm <- mean(norm)
   
   
   vect_pois_1000 <- append(vect_pois_1000, prom)
   vect_exp_1000 <- append(vect_exp_1000, prom_exp)
-  vect_bern_1000 <- append(vect_bern_1000, prom_bern)
+  vect_norm_1000 <- append(vect_norm_1000, prom_norm)
 }
 for(i in 1:5000) {
   x<-rpois(1000, 5)
   expo <- rexp(1000, 5)
-  bern <- rexp(1000, 5)
+  norm <- rnorm(1000, 5)
 
   
   prom <- mean(x)
   prom_exp <- mean(expo)
-  prom_bern <- mean(bern)
+  prom_norm <- mean(norm)
   
   
   vect_pois_5000 <- append(vect_pois_5000, prom)
   vect_exp_5000 <- append(vect_exp_5000, prom_exp)
-  vect_bern_5000 <- append(vect_bern_5000, prom_bern)
+  vect_norm_5000 <- append(vect_norm_5000, prom_norm)
   
 }
 hist(vect_pois_10)
@@ -278,10 +285,10 @@ hist(vect_exp_100)
 hist(vect_exp_1000)
 hist(vect_exp_5000)
 
-hist(vect_bern_10)
-hist(vect_bern_100)
-hist(vect_bern_1000)
-hist(vect_bern_5000)
+hist(vect_norm_10)
+hist(vect_norm_100)
+hist(vect_norm_1000)
+hist(vect_norm_5000)
 # Código para gráficos
 ```
 ---
@@ -295,6 +302,7 @@ Realice el experimento de lanzar una moneda cargada 1000 veces y observe el comp
 
 ```{r eval=FALSE}
 # Simular lanzamientos
+
 evolucion_caras <- NULL
 throws <- NULL
 evolution_porcentage <- NULL
@@ -580,20 +588,3 @@ plot(evolution_porcentage, type="l", col="blue", xlab="N° de juegos", ylab="Fon
 plot(evolution_porcentage_25, type="l", col="blue", xlab="N° de juegos", ylab="Fondos", main="Evolución de la probabilidad de ganar o quedar en ruina (apuesta = 25)")
 plot(evolution_porcentage_50, type="l", col="blue", xlab="N° de juegos", ylab="Fondos", main="Evolución de la probabilidad de ganar o quedar en ruina (apuesta = 50)")
 ```
-
-
-
-
-&nbsp;
-<hr />
-<p style="text-align: center;">A work by <a href="https://github.com/dccuchile/CC6104">CC6104</a></p>
-
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-
-<!-- Add font awesome icons -->
-<p style="text-align: center;">
-    <a href="https://github.com/dccuchile/CC6104"><i class="fab fa-github" style='font-size:30px'></i></a>
-</p>
-
-&nbsp;
