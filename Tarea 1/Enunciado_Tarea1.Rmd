@@ -175,11 +175,44 @@ quantile(hearth_database$age)
 mean(hearth_database$trestbps)
 mean(hearth_database$thalach)
 mean(hearth_database$oldpeak)
-install.packages("dplyr")
+
 library(dplyr)
 
-cor(select_if(is.numeric(hearth_database)))
+library(Rlab)
+f <- select_if(hearth_database, is.numeric)
+x <- cor(f)
+pairs(x)
+plot(x)
 
+boxplot(f)
+
+histograma_yes <- f|f$target=="YES"
+histograma_no <- f|f$target=="NO"
+
+
+#hist(histograma_yes$slope)
+#hist(histograma_no$slope)
+
+#hist(histograma_no$ca)
+#hist(histograma_yes$ca)
+
+#hist(histograma_no$thal)
+#hist(histograma_yes$theal)
+
+#hist(histograma_no$age)
+#hist(histograma_yes$age)
+
+#hist(histograma_no$trestbps)
+#hist(histograma_yes$trestbps)
+
+#hist(histograma_no$chol)
+#hist(histograma_yes$chol)
+
+#hist(histograma_no$thalach)
+#hist(histograma_yes$thalach)
+
+#hist(histograma_no$oldpeak)
+#hist(histograma_yes$oldpeak)
 
 ```
 
@@ -189,7 +222,7 @@ Pruebe el teorema central del limite aplicando un muestreo de la media en las di
 
 **Respuesta**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 
 # Definición de variables o estructuras necesarias para el muestreo.
 n <- c(10, 100, 1000, 5000)
@@ -300,7 +333,7 @@ Realice el experimento de lanzar una moneda cargada 1000 veces y observe el comp
 
 **Respuesta**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Simular lanzamientos
 
 evolucion_caras <- NULL
@@ -333,7 +366,7 @@ Imagine que usted es participante del concurso y desea calcular la probabilidad 
 
 **Respuesta:**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Creamos una función que simule el juego
 montyhall <- function(cambiar = TRUE){
   Puertas <- sample(1:3,3)             #Puertas donde la posición que tiene el 3 es el premio
@@ -419,7 +452,7 @@ Se le aconseja que para simular los lanzamientos de dados utilice la función `s
 
 **Respuesta:**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Primer grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
 
@@ -463,13 +496,13 @@ for (lanzamientos in 1:N_lan) {
   probAB <- append(probAB, sum(PAB)/length(PAB))
 }
 
-  plot(multProb, type="l", col="blue", xlab="Porcentaje de lanzamientos favorables de P(A)P(B)", ylab="Fondos", main="Evolución de la probabilidad de tener lanzamientos favorables")
-  plot(probAB, type="l", col="blue", xlab="Porcentaje de lanzamientos favorables de P(AB)", ylab="Fondos", main="Evolución de la probabilidad de tener lanzamientos favorables")
+  plot(multProb, type="l", col="blue", xlab="Porcentaje de lanzamientos favorables de P(A)P(B)", ylab="Probabilidad", main="Evolución de la probabilidad de tener lanzamientos favorables P(A)P(B)")
+  plot(probAB, type="l", col="blue", xlab="Porcentaje de lanzamientos favorables de P(AB)", ylab="Probabilidad", main="Evolución de la probabilidad de tener lanzamientos favorables P(AB)")
 
 
 ```
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Segundo grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
   
@@ -508,8 +541,8 @@ for (lanzamientos in 1:N_lan) {
   probAB <- append(probAB, sum(PAB)/length(PAB))
 }
 
-  plot(multProb, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
-  plot(probAB, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
+  plot(multProb, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Probabilidad", main="Evolución de la probabilidad de tener lanzamientos favorables P(A)P(B)")
+  plot(probAB, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Probabilidad", main="Evolución de la probabilidad de tener lanzamientos favorables P(AB)")
 
 ```
 
@@ -532,7 +565,7 @@ En el **primer experimento** deberá obtener la evolución de los fondos hasta q
 Para la **segunda parte** de este experimento, con las funciones ya creadas, proyecte 5000 apuestas y obtenga la probabilidad a la que converge el experimento empezando con una apuesta de: 5, 25 y 50.
 **Respuesta**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 # Función para obtener el desarrollo de las apuestas
 ruina <- function(fondos = 100, apuesta = 5){
   vec_fondos <- fondos
