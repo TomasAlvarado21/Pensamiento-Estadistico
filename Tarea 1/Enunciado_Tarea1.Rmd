@@ -186,50 +186,104 @@ Pruebe el teorema central del limite aplicando un muestreo de la media en las di
 ```{r eval=FALSE}
 # Definición de variables o estructuras necesarias para el muestreo.
 n <- c(10, 100, 1000, 5000)
-<<<<<<< HEAD
-vect_pois <- vector()
+
 # Realizar el muestreo de las distribuciones. //n 10, 100, 1000, 5000
-for(i in 1:5000) {
-  x<-rpois(1000, 5)
-  prom <- mean(x)
-  vect_pois <- append(vect_pois, prom)
-}
-hist(vect_pois)
-lines(density(vect_pois))
-=======
+
+
 vect_pois_10 <- vector()
 vect_pois_100 <- vector()
 vect_pois_1000 <- vector()
 vect_pois_5000 <- vector()
+
+
+vect_exp_10 <- vector()
+vect_exp_100 <- vector()
+vect_exp_1000 <- vector()
+vect_exp_5000 <- vector()
+
+
+vect_bern_10 <- vector()
+vect_bern_100 <- vector()
+vect_bern_1000 <- vector()
+vect_bern_5000 <- vector()
+
 # Realizar el muestreo de las distribuciones. //n 10, 100, 1000, 5000
 for(i in 1:10) {
   x<-rpois(1000, 5)
+  expo <- rexp(1000, 5)
+  bern <- rexp(1000, 5)
+  
   prom <- mean(x)
+  prom_exp <- mean(expo)
+  prom_bern <- mean(bern)
+  
+  
   vect_pois_10 <- append(vect_pois_10, prom)
+  vect_exp_10 <- append(vect_exp_10, prom_exp)
+  vect_bern_10 <- append(vect_bern_10, prom_bern)
 }
 for(i in 1:100) {
   x<-rpois(1000, 5)
+  expo <- rexp(1000, 5)
+  bern <- rexp(1000, 5)
+  
+  
   prom <- mean(x)
+  prom_exp <- mean(expo)
+  prom_bern <- mean(bern)
+  
+  
   vect_pois_100 <- append(vect_pois_100, prom)
+  vect_exp_100 <- append(vect_exp_100, prom_exp)
+  vect_bern_100 <- append(vect_bern_100, prom_bern)
 }
 for(i in 1:1000) {
   x<-rpois(1000, 5)
+  expo <- rexp(1000, 5)
+  bern <- rexp(1000, 5)
+  
+
   prom <- mean(x)
+  prom_exp <- mean(expo)
+  prom_bern <- mean(bern)
+  
+  
   vect_pois_1000 <- append(vect_pois_1000, prom)
+  vect_exp_1000 <- append(vect_exp_1000, prom_exp)
+  vect_bern_1000 <- append(vect_bern_1000, prom_bern)
 }
 for(i in 1:5000) {
   x<-rpois(1000, 5)
+  expo <- rexp(1000, 5)
+  bern <- rexp(1000, 5)
+
+  
   prom <- mean(x)
+  prom_exp <- mean(expo)
+  prom_bern <- mean(bern)
+  
+  
   vect_pois_5000 <- append(vect_pois_5000, prom)
+  vect_exp_5000 <- append(vect_exp_5000, prom_exp)
+  vect_bern_5000 <- append(vect_bern_5000, prom_bern)
+  
 }
 hist(vect_pois_10)
 hist(vect_pois_100)
 hist(vect_pois_1000)
 hist(vect_pois_5000)
->>>>>>> parent of d8ba425 (Update Enunciado_Tarea1.Rmd)
+
+hist(vect_exp_10)
+hist(vect_exp_100)
+hist(vect_exp_1000)
+hist(vect_exp_5000)
+
+hist(vect_bern_10)
+hist(vect_bern_100)
+hist(vect_bern_1000)
+hist(vect_bern_5000)
 # Código para gráficos
 ```
-
 ---
 
 ### Pregunta 3: Ley de los Grandes Numeros.
@@ -239,7 +293,7 @@ Realice el experimento de lanzar una moneda cargada 1000 veces y observe el comp
 
 **Respuesta**
 
-```{r eval=TRUE}
+```{r eval=FALSE}
 # Simular lanzamientos
 evolucion_caras <- NULL
 throws <- NULL
@@ -339,8 +393,8 @@ n_juegos <- function(n = 1500 ,cambiar_puerta = TRUE){
     }
     evolution_porcentage_sc <- append(evolution_porcentage_sc, sum(evolucion_victoria_sc)/length(evolucion_victoria_sc))
     }
-  plot(evolution_porcentage, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
-  plot(evolution_porcentage_sc, type="l", col="red", xlab="Porcentaje de victorias sin cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar sin cambiar de puerta")
+plot(evolution_porcentage, type="l", col="blue", xlab="Porcentaje de victorias al cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar al cambiar de puerta")
+plot(evolution_porcentage_sc, type="l", col="red", xlab="Porcentaje de victorias sin cambiar de puerta", ylab="Fondos", main="Evolución de la probabilidad de ganar sin cambiar de puerta")
 }
 #montyhall()
 n_juegos()
