@@ -186,15 +186,35 @@ Pruebe el teorema central del limite aplicando un muestreo de la media en las di
 ```{r eval=FALSE}
 # Definición de variables o estructuras necesarias para el muestreo.
 n <- c(10, 100, 1000, 5000)
-vect_pois <- vector()
+vect_pois_10 <- vector()
+vect_pois_100 <- vector()
+vect_pois_1000 <- vector()
+vect_pois_5000 <- vector()
 # Realizar el muestreo de las distribuciones. //n 10, 100, 1000, 5000
+for(i in 1:10) {
+  x<-rpois(1000, 5)
+  prom <- mean(x)
+  vect_pois_10 <- append(vect_pois_10, prom)
+}
+for(i in 1:100) {
+  x<-rpois(1000, 5)
+  prom <- mean(x)
+  vect_pois_100 <- append(vect_pois_100, prom)
+}
+for(i in 1:1000) {
+  x<-rpois(1000, 5)
+  prom <- mean(x)
+  vect_pois_1000 <- append(vect_pois_1000, prom)
+}
 for(i in 1:5000) {
   x<-rpois(1000, 5)
   prom <- mean(x)
-  vect_pois <- append(vect_pois, prom)
+  vect_pois_5000 <- append(vect_pois_5000, prom)
 }
-hist(vect_pois)
-lines(density(vect_pois))
+hist(vect_pois_10)
+hist(vect_pois_100)
+hist(vect_pois_1000)
+hist(vect_pois_5000)
 # Código para gráficos
 ```
 
