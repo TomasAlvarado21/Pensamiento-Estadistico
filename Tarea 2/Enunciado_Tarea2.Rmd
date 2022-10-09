@@ -73,26 +73,36 @@ A continuación, se presenta una serie de declaraciones relacionadas con el sesg
 
   1. La Tercera quiere conocer la opinión de la gente sobre una propuesta de ley sobre el matrimonio igualitario. Un reportero del diario sale de la central ubicada en Las Condes y selecciona al azar a 300 personas que pasean por allí, preguntándoles sobre la ley propuesta. ¿Qué podemos decir de este plan de muestreo?.
 
-> Respuesta Aquí
+> 1.- Existe sesgo puesto que estamos seleccionando a gente que tiene una alta probabilidad de pertenecer a la misma clase social, por lo que la respuesta puede estar afectada por esto. Para arreglarlo, tendria que entrevisar gente de distintas comunas e incluso de region.
 
   2. Una empresa de telefonía quiere conocer el grado de satisfacción de los propietarios de su nuevo servicio 5g, para ver que tal es la calidad del servicio entregado. Para ello, selecciona al azar 500 números entre todo el conjunto de clientes, colocándose en contacto telefónico con ellos. ¿Qué podemos decir de este plan de muestreo?
 
-> Respuesta Aquí
+> No existe sesgo puesto que es al azar entre sus clientes.
+
 
   3. Una compañía aérea quiere hacer una encuesta a sus clientes para mejorar su servicio. Durante un mes, envía un correo electrónico a una muestra aleatoria de clientes que hayan volado con la aerolínea el día anterior (ningún cliente será contactado más de una vez). En el correo electrónico se indica que la compañía aérea desea que el cliente rellene una encuesta de 10 minutos para ayudar a la compañía a mejorar su servicio. ¿Qué podemos decir de este plan de muestreo? ¿el sorteo de un producto podría solventar esto?.
   
-> Respuesta Aquí
+> Existe un pequeño sesgo puesto que en general la edad puede influir en si un apersona responde o revisa un correo y a la vez la edad puede determinar si su vuelo fue mas o menos comodo comparado con por ejemplo un adulto mayor.
 
 
 #### **Pregunta 2:**
 Explique una buena practica para desarrollar un muestreo, ¿Cree que en una encuesta real es factible obtener una muestra sin sesgo?
 
-> Respuesta Aquí
+> Buenas practicas para desarrollar un buen muestreo es que las muestras que se esten tomando sean representativas de la poblacion, ya que siempre se trabaja con muestras de datos inferiores a la población original. Por otro lado, se necesita que estas muestras muestras sean aleatorias, es decir, totalmente al azar, pero en cambio, si al momento de realizar la seleccion de la muestra, se realiza un proceso de seleccion de datos, esto quiere decir que estamos introduciendo un sesgo a la obtencion de datos, lo cual es lo contrario a lo que se quiere conseguir para tener una muestra representativa. La verdad es que es casi imposible evitar el sesgo de muestreo, ya que este depende de muchos factores, ya que hay diversos tipos de sesgo de muestro, pero se puede evitar este hasta cierto punto siguiendo diferentes practicas:
+• Definir bien la poblacion y el marco muestral
+• Asegurarse que la poblacion objetivo y el marco de muestreo coinciden.
+• Evitar el muestro por conveniencia
+• Establecer los objetivos de la encuesta.
+• Dar a los encuestados igualdad de oportunidad de participacion
+• Que la encuesta sea de un largo corto/razonable
+• Hacer que las encuestas sean facilmente accesibles
+• Realizar un seguimiento de las respuestas.
 
 #### **Pregunta 3:**
 Nombre una ventaja y una desventaja del método de máxima verosimilitud. Justifique cada una de las ventajas y desventajas señaladas.
 
-> Respuesta Aquí
+> Es consistente, esto es ventajoso porque al tomar mas datos nos aseguramos de que nos acercamos cada vez mas a los parametros que buscamos, ademas que el sesgo disminuye a 0 al igual que el SE. 
+Desventaja: Se necesita informacion base para poder calcular los parametros (es decir tener una pequeña idea de f(x,o). Por lo que seria desventajos puesto que podriamos tener los datos sin esa información y nuestra MLE ya no nos serviria.
 
 #### **Pregunta 4:**
 Considere que recopila $X_{1},...,X_{n} \sim Poisson(\theta)$ donde $\theta$ es un parámetro desconocido. Calcule el estimador de máxima verosimilitud para $\theta$. Considere la siguiente expresión para la Poisson:
@@ -101,7 +111,9 @@ $$ f(X_{i};\theta) = \prod_{i=1}^{n} \frac{\theta^{X_{i}}e^{-\theta}}{X_{i}!}$$
 
 **Nota:** Puede ser útil utilizar el logaritmo natural para inferir $\theta$.
 
-> Respuesta Aquí
+> 
+![](p4_1.png)
+![](p4_2.png)
 
 #### **Pregunta 5:**
 Suponga que usted ha realizado una `sampling distribution` de dos encuestas diferentes en los que obtiene los datos `Muestreo 1` y `Muestreo 2`, al momento de estimar el parámetro $\beta$ de cada uno de los muestreos, se da cuenta que el estimador para los diferentes datos varia según el tamaño de observaciones (n). Al darse cuenta de esto, gráfica el histograma del comportamiento de los estimadores, obteniendo los siguientes gráficos:
@@ -113,12 +125,13 @@ Suponga que usted ha realizado una `sampling distribution` de dos encuestas dife
 
 Suponiendo que la linea roja en los gráficos representa el valor real del parámetro para cada muestra, comente las características que observa en la evolución del estimador para el `Muestreo 1` y el `Muestreo 2`.
 
-> Respuesta Aquí
+> Podemos ver que en el muestreo 1 al hacerse más grande la muestra, el estimador se va acercando más al verdadero valor del parametro B de la muestra. Por otro lado, podemos ver que en el muestreo 2 a medida que crece la muestra, el estimador se va alejando del valor real del parametro B. 
+Esto nos quiere decir que en el muestreo 1 el estimador esta asintoticamente insesgado, no asi para la muestra 2, la cual si tendría un sesgo, ya que no se va acercando al valor real.
 
 #### **Pregunta 6:**
 Considere que esta trabajando con intervalos de confianza al $95\%$ e intenta estudiar un parámetro $\theta$, ¿porque es incorrecto decir, en la visión frecuentista, que la probabilidad que $\theta$ pertenezca al intervalo es del $95\%$?
 
-> Respuesta Aquí
+> Primero mencionar que decir eso se acerca mas a una vision bayesiana. Luego para poder colocarnos en la vision frecuentista tendriamos que decir que para una cantidad X de muestras aleatorias del mismo tamaño y si se repiten una cantidad determinada de veces, el 95% de ellas el parametro $\theta$ pertenecería al intervalo.
 
 #### **Pregunta 7:**
 Se sabe que al realizar un test de hipótesis es posible equivocarse al tomar una decisión. Sí denotamos $H_0$ como la hipótesis nula y $H_1$ como la hipótesis alternativa, existen dos posibles errores que se pueden obtener: 
@@ -135,7 +148,8 @@ En base a los errores señalados, de un ejemplo de cuando es más relevante dism
 Explique cual es la diferencia entre el test **one-sided** y **two-sided**, de un ejemplo en donde se pueda utilizar **one-sided** y otro donde se pueda utilizar **two-sided**. ¿Es un método mejor que el otro?
 
 
-> Respuesta Aquí
+> One-sided test, permiten la posibilidad de un efecto en una dirección. Two-sided test prueban la posibilidad de un efecto en dos direcciones: positiva y negativa.
+Una será mejor que otra dependiendo del caso. Pongamos que teenemos una empresa que fabrica paquetes de alimentos con u=100gr (hipotesis 1) pero un empleado dice que es menor a 100gr, En este caso conviene realizar One sided test puesto que solo queremos verificar por un lado, lo mismo pasaria si se dijiera que fuera mayor a 100gr. Ahora si el empleado afirma que la media no es 100gr se tendria que realizar un Two-sided test puesto que existe un posible efecto en las 2 direcciones.
 
 #### **Pregunta 9:**
 
