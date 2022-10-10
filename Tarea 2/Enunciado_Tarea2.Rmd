@@ -230,6 +230,7 @@ Del gráfico es posible observar que la línea punteada es la media de la poblac
 **Respuesta:**
 
 ```{r, eval=FALSE}
+
 # Definimos tamaños de muestreo
 tamano_muestra = 30
 n_muestras = 5000
@@ -237,13 +238,23 @@ n_muestras = 5000
 # Generamos una exponencial para luego generar el subsampling de ella
 exponencial = rexp(10000, rate = 2)
 # Obtenemos la media poblacional de la exponencial
-
+media <- mean(exponencial)
+print(media)
 # Sampling distribution, calculo del intervalo de confianza y proporción.
+sample_means = rep(NA, n_muestras)
+for(i in 1:n_muestras){
+  sample_means[i] = mean(rexp(tamano_muestra, rate=2))
+}
+
+head(sample_means)
 # - En base a la distribución exponencial, generamos multiples sampling 
 # distribution.
 # - Se estima la media del muestreos y obtenemos el intervalo de confianza de 
 # cada una de las muestras
 
+t.test(sample_means,coef.level = 0.95)
+ggplot(sample_means, aes(X, Y)) +                                     
+  geom_line(color = "dark green", size = 2)
 # Plot de Intervalos de confianza (ver respuesta esperada)
 
 # Plot de proporción de Intervalos de confianza
