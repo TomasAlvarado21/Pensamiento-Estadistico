@@ -192,6 +192,10 @@ Esta pregunta tiene como objetivo comprobar a través de gráficos las caracter�
 
 **Respuesta:**
 
+```{r, eval=FALSE}
+
+
+```
 ---
 
 ### Pregunta 2: Intervalo de Confianza
@@ -230,7 +234,8 @@ Del gráfico es posible observar que la línea punteada es la media de la poblac
 **Respuesta:**
 
 ```{r, eval=FALSE}
-
+library(ggplot2)
+library(hrbrthemes)
 # Definimos tamaños de muestreo
 tamano_muestra = 30
 n_muestras = 5000
@@ -245,16 +250,29 @@ sample_means = rep(NA, n_muestras)
 for(i in 1:n_muestras){
   sample_means[i] = mean(rexp(tamano_muestra, rate=2))
 }
-
+n <- 1:n_muestras
 head(sample_means)
 # - En base a la distribución exponencial, generamos multiples sampling 
 # distribution.
 # - Se estima la media del muestreos y obtenemos el intervalo de confianza de 
 # cada una de las muestras
+desviacion <- sd(sample_means)
+z <- 1.96
+errorst <- desviacion/sqrt(n_muestras)
+lim_inf <- media - (z*errorst)
+lim_sup <- media + (z*errorst)
+
+interval <- data.frame(n_muestras, media, desviacion, z, errorst, lim_inf, lim_sup)
+
+dataf <- data.frame(sample_means)
+
+
 
 t.test(sample_means,coef.level = 0.95)
-ggplot(sample_means, aes(X, Y)) +                                     
-  geom_line(color = "dark green", size = 2)
+
+
+
+
 # Plot de Intervalos de confianza (ver respuesta esperada)
 
 # Plot de proporción de Intervalos de confianza
