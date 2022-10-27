@@ -193,7 +193,15 @@ Esta pregunta tiene como objetivo comprobar a través de gráficos las caracter�
 **Respuesta:**
 
 ```{r, eval=FALSE}
+vect<-NULL
+for (i in range(100)){
+  pn<-sum(rbinom(i, 1, 0.5))/i
 
+
+vect<-append(vect,pn)
+  
+}
+plot(vect, type="l", col="blue", xlab="n", ylab="Pn", main="Evolución de Pn con n 1-100")
 
 ```
 ---
@@ -276,7 +284,7 @@ t.test(sample_means,coef.level = 0.95)
 # Plot de Intervalos de confianza (ver respuesta esperada)
 
 # Plot de proporción de Intervalos de confianza
-
+# aqui deberiamos ver un grafico similar al adjuntado(no lo logramos hacer), en el cual muestre los intervalos de confianza donde la gran mayoria de estos tengan dentro a la media general.
 ```
 
 ---
@@ -307,6 +315,17 @@ Cabe señalar que el método de máxima verosimilitud deberá ser programado por
 
 ```{r, eval=FALSE}
 # Carga de dataset
+body_m <- read.csv("Body Measurements _ original.csv")
+height <- body_m$TotalHeight 
+
+# Primera Parte
+# Plot de densidades de la variables TotalHeight
+
+dx <- density(height)
+
+# Añadimos la línea de densidad
+plot(dx, lwd = 2, col = "red",
+     main = "Densidad")
 
 # Primera Parte
 # Plot de densidades de la variables TotalHeight
