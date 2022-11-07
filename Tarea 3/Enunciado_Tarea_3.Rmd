@@ -28,8 +28,8 @@ Tarea 3: Frequentist Inference II
 
 #### **Integrantes :**
 
--   Alumno 1
--   Alumno 2
+-   Sebastian Brzovic
+-   Tomas Alvarado
 
 #### **Cuerpo Docente:**
 
@@ -122,7 +122,9 @@ $\beta_{i}$
 
 -   [ ] $y(x) = \ln(x^{2}+\beta_{0})$
 
-> Respuesta Aquí
+> 1. Esta si es una regresion lineal 
+2. Esta no va a ser una regresion lineal, será no lineal 
+3. Esta tampoco será una regresion lineal.
 
 #### **Pregunta 2:**
 
@@ -136,14 +138,15 @@ $$\hat{N°\_de\_fanaticos\_del\_anime}=300+90*numero\_de\_semestres$$
 intercepto y la pendiente tienen una interpretación coherente para
 cualquier modelo lineal?, si no es así, de un ejemplo.
 
-> Respuesta
+> 1. Del modelo podemos interpretar que el numero 300 seria nuestro $\beta _0$ o intercepto y que el 90 sería nuestro $\beta _1$ o pendiente.
+2. De las clases podemos ver que los modelos de regresion lineal no siempre son coherentes, por ejemplo:
 
 #### **Pregunta 3:**
 
 Considere un test con dos muestras no aparejado, explique porque se hace
 una corrección a los grados de libertad en el test de Welsh.
 
-> Respuesta Aquí
+> Se tiene que hacer una corrección de los grados de libertad dado que como son dos muestras no aparejadas, para asegurar que la varianza sea igual.
 
 #### **Pregunta 4:**
 
@@ -151,7 +154,7 @@ Al realizar una regresión lineal simple con una variable categórica
 $(\beta_{0} + \beta_{1} \cdot \text{categroica})$ ¿que interpretación
 puede obtenerse del coeficiente que acompaña a la variable categórica?
 
-> Respuesta Aquí
+> Al ser una variable categorica, esta va a variar solo un numero finito de veces o solo tiene un numero finito de posibilidades, por lo que para hacer una regresion lineal no es util, dado que esta solo servirá para estos casos y no para cualquier caso de la regresión lineal.
 
 #### **Pregunta 5:**
 
@@ -169,7 +172,7 @@ hipótesis probabilista. "
 Explique porque el test de significancia sobre los parámetros de una
 regresión lineal se realiza bajo la hipótesis nula $\beta_{H_{0}}=0$.
 
-> Respuesta Aquí
+> Esto es porque esto significa que tendra independecia lineal, por lo que los datos seran fijos en las muestras repetidas.
 
 #### **Pregunta 7:**
 
@@ -177,7 +180,7 @@ regresión lineal se realiza bajo la hipótesis nula $\beta_{H_{0}}=0$.
 parámetros que componen una regresión lineal? ¿Qué nos permitirían
 calcular?
 
-> Respuesta Aquí
+> Nos representa el error que tiene distribucion normal
 
 ### **Pregunta 8**
 
@@ -217,7 +220,7 @@ explique cual es la característica de estas variables.
 Señale a que se refiere la interacción de los predictores en una
 regresión lineal.
 
-> Respuesta Aquí
+> El efecto de interacción es cuando el efecto de un predictor varía dependiendo del valor que adquiera otro predictor. El modelo mejorará al incluir esta interaccion.
 
 ------------------------------------------------------------------------
 
@@ -408,21 +411,34 @@ serles útiles (no hay problema si decide utilizar los mismos ejemplos):
 **Respuesta**
 
 ```{r, eval=FALSE}
+
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+
+# Para realizar plots
+library(scatterplot3d)
+library(ggplot2)
+library(plotly)
+
+# Manipulación de varios plots en una imagen.
+library(gridExtra)
 # Power Function, El esqueleto posee como ejemplo como obtener la potencia de un z-test one-sample.
 # Si utiliza este esqueleto deberá comentar la función que cumple cada una de las partes entregadas
 power.z.test <- function(n1=NULL, sigma1=0.5, 
                          n2=NULL,sigma2=0.5, mu.Ha=0 , 
                          mu.True=0, alfa=0.05){
-  if(){
+  Power<-0
+  if(length(n2)==0){
     # 
-    Z = qnorm(1-alfa)
+    Z<-qnorm(1-alfa)
     
-    denominador = sigma1/sqrt(n1)
-    X_bar = Z*denominador + mu.Ha
+    denominador<-sigma1/sqrt(n1)
+    X_bar<-Z*denominador + mu.Ha
     
-    numerador = X_bar - mu.True
-    Z = numerador/denominador
-    Power = 1 - pnorm(Z)
+    numerador<-X_bar - mu.True
+    Z<-numerador/denominador
+    Power<-1 - pnorm(Z)
     
     # 
     min_lim = min(rnorm(1000, mean=mu.Ha, sd=denominador)) - 
@@ -444,30 +460,102 @@ power.z.test <- function(n1=NULL, sigma1=0.5,
       ggtitle("H0 vs Ha") +
       xlab(expression(bar(X))) + ylab("Density")
     }
-  }
   
-  if(){
+  #if(length(n2)!=0){
     #
+    #z_izq<-qnorm(alfa/2)
+    #den_izq<-sigma1/sqrt(n1)
+    #xbar_izq<-z_izq*den_izq+mu.Ha
+    #num_izq<-xbar_izq-mu.True
+    #z_izq<-num_izq/den_izq
     
+    #z_der<-qnorm(alfa/2)
+    #den_der<-sigma1/sqrt(n1)
+    #xbar_der<-z_der*den_der+mu.Ha
+    #num_der<-xbar_der-mu.True
+    #z_der<-num_der/den_der
     # 
-    if(plot.hypothesis){
+    #if(plot.hypothesis){
       
       # 
       
       # 
-      plot = ...
-    }
-  }
+      #plot = ...
+    #}
+  #}
   
   # Como R no permite retornar dos salidas usamos una lista
   # Los resultados se llaman con $plot o $power
-  return(list(plot=plot,power=Power))
+
+  return(list(plot,Power))
 }
 
 
-# Plot de gráfico de potencia
+#### Plot de gráfico de potencia ####
+#Lamentablemente no me funciono ninguna de mis varios intentos por plotear la potencia, me tiraban errores que no encontre en internet.
+po_05<-c()
+po_01<-c()
+po_1<-c()
 
-# Experimentos
+resultados<-data.frame(z=double(), power=double(), a=integer())
+#for (i in 1:20){
+#  c<-i+90
+#  po_05<-power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=100, mu.True=c, alfa=0.05)
+#  po_01<-power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=100, mu.True=c, alfa=0.01)
+#  po_1<-power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=100, mu.True=c, alfa=0.1)
+#  data_05<- data.frame(z=c, power=po_05[2], alpha=factor(0.05))
+#  data_01<- data.frame(z=c, power=po_01[2], alpha=factor(0.01))
+#  data_1<- data.frame(z=c, power=po_1[2], alpha=factor(0.1))
+#  resultados<-rbind(resultados,data_05)
+#  resultados<-rbind(resultados,data_01)
+#  resultados<-rbind(resultados,data_1)
+  
+  #po_05<-append(po_05,power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=0, mu.True=c, alfa=0.05)[2])
+  #po_01<-append(po_01,power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=0, mu.True=c, alfa=0.01)[2])
+  #po_1<-append(po_1,power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=0, mu.True=c, alfa=0.1)[2])
+
+#}
+
+#ggplot(resultados, aes(x=z, y=power, color=alpha))+
+#  geom_line()+ geom_point()+
+#  ylim(0,1) + xlab("Mean") + ylab("Power") +
+#  ggtitle("Power variando la confianza y el mean")
+
+
+#Data1<-data.frame(p_1 = 1 : 20, values_1 = po_01)
+#Data2<-data.frame(p_2 = 1 : 20, values_2 = po_1)
+#Data3<-data.frame(p_3 = 1 : 20, values_3 = po_05)
+
+#ggplot() + 
+#geom_line(data=Data1, aes(x=p_1, y=values_1), color='green') + 
+#geom_line(data=Data2, aes(x=p_2, y=values_2), color='red') + 
+#geom_line(data=Data3, aes(x=p_3, y=values_3), color='blue')
+
+#df=data.frame(x = 1 : 20,
+#              values = po_01, po_1, po_05,
+#              fun = rep(c("Confianza = 0.01", "Confianza = 0.05", "Confianza = 0.1"))
+#              )
+  
+#ggplot(df, aes(x, values, col = fun))+geom_line()
+
+#power.z.test(n1=16, sigma1=16,n2=NULL,sigma2=0.5, mu.Ha=0, mu.True=0, alfa=0.05)
+
+
+###### Experimentos ######
+
+### ONE SAMPLE ###
+#Una industria tiene una maquina dispensadora que llena 80 ml en una botella. Un trabajador cree que el promedio del fluido no es 80ml. Usando un sample de 40 mide que el promedio que lleno es de 82ml con una desviacion estandar de 2.5. 
+#La hipotesis nula es que llena un promedio de 80ml
+#La hipotesis alternativa es que no es 80ml
+#Con esto tenemos que al variar el nivel de confianza podemos ver la variacion de la potencia y el grafico
+power.z.test(n1=40, sigma1=2.5,n2=NULL,sigma2=0.5, mu.Ha=80, mu.True=82, alfa=0.05)
+power.z.test(n1=40, sigma1=2.5,n2=NULL,sigma2=0.5, mu.Ha=80, mu.True=82, alfa=0.01)
+power.z.test(n1=40, sigma1=2.5,n2=NULL,sigma2=0.5, mu.Ha=80, mu.True=82, alfa=0.1)
+
+
+### TWO SAMPLE ###
+
+#Se tiene 2 samples una de Unos ratones en dieta y sus pesos y el otro sample de los pesos de ratones sin dieta. De esta manera al tomar muestras al azar de cada muestra y al aplicarle la funcion deberia dar el valor de la potencia.
 ```
 
 ------------------------------------------------------------------------
@@ -563,70 +651,93 @@ $$\sigma_{PhD} = 20615$$
 **Respuesta:**
 
 ```{r}
-df = read.csv('marketing_campaign.csv', sep='\t')
-head(df)
 
-# Implementación de Z-test one-sided y two-sided
-# Puede utilizar este esqueleto
-z_test <- function(data1=NULL, sigma1=0.5, data2=NULL, sigma2=0.5, 
-                   mu.Ha=0, test.type = c('one-sided','two-sided'),
-                   verbose=TRUE){
-  
-  if(length(test.type)>=2){
-    print("Por favor escoge un tipo de Test: ´one-sided´ o ´two-sided´ ")
-    return()
+d = read.csv('insurance.csv', sep=',')
+d1<-d
+###
+#1== male, 0==female
+#1== yes, 0==no
+#1==south, 0==north
+###
+d1$sex<-ifelse(d1$sex=="male",1,0)
+d1$smoker<-ifelse(d1$smoker=="yes",1,0)
+d1$region<-ifelse(d1$region=="southwest",1,0)
+cor(d1)
+x_prom <- mean(d1$smoker)
+y_prom <- mean(d1$charges)
+##viendo la correlacion elegimos las columnas smokers y charges ya que son los que tienen la correlacion mas cercana a 1
+lm_reg <- function(X, Y){
+  x_prom <- mean(X)
+  y_prom <- mean(Y)
+  b1<-0
+  b1_div<-0
+  sst<-0
+  nu<-length(X)
+  for(i in 1:nu){
+    b1<- b1 + (X[i]-x_prom)*(Y[i]-y_prom)
+    b1_div<- b1_div + (X[i]-x_prom)*(X[i]-x_prom)
+    sst <- sst + (Y[i]-y_prom)*(Y[i]-y_prom)
   }
-  else if(length(test.type)==1 && !(test.type %in% c('menor','mayor','two-sided'))){
-    print("Por favor escoge un tipo de Test: ´menor´, ´mayor´ o ´two-sided´")
-    return()
-  }
-  else if(is.null(data2)){
-    
-    # P-value
-    if(test.type=='menor'){
-
-    }
-    else if(test.type=='mayor'){
-
-    }
-    else if(test.type=='two-sided'){
-
-    }
-    
-    # Texto de Salida
-    if(verbose){
-      cat("\tOne-sample Z-Test:\n\nData analizada:",
-                      deparse(substitute(data1)), "\nZ=", Z_score, 
-                      "P-value=", p_value, "\n\n",sep=" ")
-    }
-    
-    return(p_value)
-    
-  }
-  else if(!is.null(data2)){
-    # Hypothesis test
-    
-    # p-value
-    if(test.type=='menor'){
-      p_value = ...
-    }
-    else if(test.type=='mayor'){
-      p_value = ...
-    }
-    else if(test.type=='two-sided'){
-      p_value = ...
-    }
-    # Texto de Salida
-    if(verbose){
-      cat("\tTwo-sample Z-Test:\n\nData analizada:",
-                      deparse(substitute(data1)),"y",
-                      deparse(substitute(data2)), "\nZ=", 
-                      Z_score, "P-value=", p_value, "\n\n",sep=" ")
-    }
-  
-    return(p_value)
-  }
+  b1<-b1/b1_div
+  b0<- y_prom - b1*x_prom
+  return (c(b0, b1, sst))  
 }
+Rsmoke<-NULL
+Rcharges<-NULL
+b0<-lm_reg(d1$smoker, d1$charges)[1]
+b1<-lm_reg(d1$smoker, d1$charges)[2]
+sst<-lm_reg(d1$smoker, d1$charges)[3]
+#c(b0, b1, sst)<- lm_reg(d1$smoker, d1$charges)
+#c(b0,b1,sst)<-c(lm_reg(d1$smoker, d1$charges)[0],lm_reg(d1$smoker, d1$charges)[1],lm_reg(d1$smoker, d1$charges)[2])
+
+b0
+b1
+sst
+reg1<-lm(d1$charges ~ d1$smoke, d1)
+reg1
+y_pred<-NULL
+ssm<-0
+
+l<-length(d1$age)
+l1<-length(d1$sex)
+l2<-length(d1$smoker)
+l3<-length(d1$charges)
+for (i in 1:l1){
+  vale<-b0+b1*d1$smoker[i]
+  y_pred<-append(y_pred, vale)
+}
+
+for (i in 1:l1){
+  ssm<-ssm + (y_pred[i]-y_prom)*(y_pred[i]-y_prom)
+}
+ssm
+sst
+R<-ssm/sst
+R
+
+#Ahora vamos con R ajustado
+n<-l3
+k<-6 #age, sex, bmi, children, smoker, region
+#SSM/SST
+R_adj<-1-((1-R*R)*(n-1)/(n-k-1))
+R_adj
+
+
+# plot a scatter plot
+plot(d1$smoker,d1$charges,
+     main='Insurance charges by smokers and not smokers',
+     xlab='Smoker',ylab='Charges')
+  
+# plot a regression line
+abline(b0,b1,col='red')
+
+
+
+
+##PARTE B
+#
+#Escogeremos edad y si es fumador o no
+
 ```
 
 ```{r}
