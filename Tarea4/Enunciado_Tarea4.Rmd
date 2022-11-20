@@ -200,6 +200,30 @@ Considere el dataset "moneda.csv" donde se encuentran los resultados de un exper
 
 ```{r}
 dataMoneda <- read.csv("moneda.csv", header = TRUE)
+
+graph_lap <- function(num_tiros){
+  
+  lanzamientos <- dataMoneda[2:(num_tiros + 1),]
+  w <- sum(lanzamientos)
+  l <- num_tiros - w
+  globe.qa <- quap(
+    alist(
+      W ~ dbinom(W+L, p),
+      p ~ dunif(0,1)
+    ),
+    data = list = (W=w, L=l))
+  precis(globe.qa)
+  sample.quap <- extrac.samples(globe.qa)
+  dens(sample.quap)
+}
+
+graph_lap(5)
+graph_lap(10)
+graph_lap(50)
+graph_lap(100)
+graph_lap(250)
+graph_lap(500)
+graph_lap(1000)
 ```
 
 
