@@ -211,7 +211,7 @@ graph_lap <- function(num_tiros){
       W ~ dbinom(W+L, p),
       p ~ dunif(0,1)
     ),
-    data = list = (W=w, L=l))
+    (data = list = (L=l)))
   precis(globe.qa)
   sample.quap <- extrac.samples(globe.qa)
   dens(sample.quap)
