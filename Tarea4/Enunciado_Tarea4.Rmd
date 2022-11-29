@@ -11,8 +11,8 @@ output:
 <center><strong>CC6104: Statistical Thinking</strong></center>
 #### **Integrantes :** 
 
-- Alumno 1
-- Alumno 2
+- Tomas Alvarado
+- Sebastian Brzovic
 
 #### **Cuerpo Docente:**
 
@@ -77,31 +77,31 @@ A continuación, se presentaran diferentes preguntas que abordan las temáticas 
 
 Explique cual es la diferencia fundamental entre la estadística bayesiana y frecuentista.
 
-> Respuesta Aquí
+> Tenemos por definicion que ambas estadisticas son diferentes, la frecuentista esta basada en que de acuerdo a los datos estos se pueden usar para calcular la probabilidad de que ocurra algo, basandose en la frecuencia con la que ocurre en una población. Por otro lado la bayesiana dicta que podemor ir actualizando el calculo de la probabilidad de que ocurra ese evento, ademas que ya que esta basada en el teorema de bayes e ir teniendo nuevos datos es como se van actualizando estas probabilidades, con lo cual se puede calcular la probabilidad de cualquier hipotesis.
 
 #### **Pregunta 2:**
 
 Discuta la siguiente afirmación **La inferencia bayesiana permite fácilmente utilizar distintos tipos de información**.
 
-> Respuesta Aqui
+> Como vimos en la pregunta 1, la inferencia bayesiana ocupa el teorema de Bayes, con el cual al ir disponiendo de mas datos, esta probabilidad se iría actualizando, además de no estar cerrado a un solo tipo de dato y finalmente haciendo mucho más preciso el calculo de la probabilidad.
 
 #### **Pregunta 3:**
 
 Explique la diferencia entre **prior probability** y **posterior probability**
 
-> Respuesta Aquí
+> La probabilidad previa es la probabilidad de que suceda el evento en cuestión sin antes tomar en cuenta los datos, por lo que es una medida de referencia. Por otro lado, la probabilidad posterior es la probabilidad de que suceda el evento pero teniendo todos los datos en cuenta. Ademas podemos notar que ambas probabilidades se pueden ir actualizando(como hablamos en las preguntas anteriores), y por ejemplo, con lo que en una nueva iteración podriamos tener que nuestra posterior será nuestra nueva previa y la nueva posterior será la calculada con los nuevos datos ingresados.
 
 #### **Pregunta 4:**
 
 El estadista bayesiano "Bruno Finetti" menciona la siguiente frase en su libro de probabilidad:  **La probabilidad no existe**. Lo que en verdad quizo decir es que la probabilidad es un método para describir incertidumbre en un observador con conocimiento limitado. Discuta esta información utilizando el ejemplo del lanzamiento del globo terraqueo visto en clases. ¿Que significa decir "la probabilidad de que sea agua es 0.7"?
 
-> Respuesta Aquí
+> Basándonos en la frase del enunciado podemos inferir que la probabilidad es una medida para medir nuestro grado de incertidumbre y sino no conocemos todas las condiciones, no podemos decir con seguridad que algo es certero hasta lograr eso. Ahora, la frase “la probabilidad de que sea agua es 0.7” quiere decir que de acuerdo a la información que se tiene de la situación, sin conocer a plenitud esta, hay una probabilidad de 0.7 de que la sección elegida sea agua.
 
 
 #### **Pregunta 5:**
 ¿ Que ventaja entrega que la distribución de la posterior este en la misma familia de distribución de probabilidad que la del prior?. De un ejemplo de alguna distribución que posee este comportamiento.
 
-> Respuesta Aquí
+> Sabemos por todo lo anterior, que la gran ventaja de que ambas pertenezcan a la misma familia es que se puede calcular la posterior de manera sencilla de acuerdo a la previa y todos los datos actuales. Un ejemplo de una distribución con este comportamiento es la distribución normal.
 
 
 #### **Pregunta 6:**
@@ -110,26 +110,35 @@ Señale y explique los pasos de la *grid approximation* para obtener la posterio
 a. ¿Cual de los pasos señalados nos permite obtener una distribución de la posterior mas precisa?.
 b. Cuales son las limitaciones de la *grid approximation*.
 
-> Respuesta Aquí
+> Los pasos para hacer el grid approximation son:
+a)
+- definir el grid con la cantidad de puntos
+- grid tendra a su disposición una lista de valores que puede tomar cada uno de los parametros.
+- Para los parametros se saca el valor de la previa
+- Se repite este ultimo pero con el likelihood
+- Se calcula la posterior, multiplicando likelihood con previa
+
+> El paso mas importante para tener un calculo más preciso es el de calcular la previa, ya que a medida que esta se calcula con más datos, tendrá una mejor distribución y por ende al calcular el posterior será más certero.
+b) Basicamente, si tenemos una gran cantidad de información, sucede que a la hora de tener que hacer los calculos, estos no son eficientes, por lo cual termina por resultar en que no es viable en el tiempo.
 
 
 #### **Pregunta 7:**
 
 ¿ Por qué es necesario aprender a trabajar con muestras de la posterior?.
 
-> Respuesta Aquí
+> Aprender a trabajar con la posterior es sumamente útil, ya que nos permite hacer aproximaciones, calcular media y varianza, y lo más útil de todo, que es lo que ya hemos visto en las preguntas anteriores, que uno puede ir ocupando la posterior actual en la siguiente “iteración”, siendo esta la previa, con lo cual al tener más datos y nueva información, se volverá más preciso el calculo de la probabilidad, permitiendonos sacar mejores conclusiones.
 
 
 #### **Pregunta 8:**
 Señale si las siguientes afirmaciones son verdaderas o falsas, en el caso que sean falsas justifique su respuesta:
 
-- [ ] Los point estimates de la posterior no entregan información relevante en un estudio. 
+- [F] Los point estimates de la posterior no entregan información relevante en un estudio. 
 
-- [ ] Un intervalo de confianza  es un intervalo dentro del cual un valor de parámetro no observado cae con una probabilidad particular, mientras que un intervalo de credibilidad es un rango de valores en el que se estima que estará cierto valor desconocido.
+- [V] Un intervalo de confianza  es un intervalo dentro del cual un valor de parámetro no observado cae con una probabilidad particular, mientras que un intervalo de credibilidad es un rango de valores en el que se estima que estará cierto valor desconocido.
 
-- [ ] La principal ventaja de HPDI frente a un intervalo de credibilidad es que si la posterior no distribuye de forma normal, el HPDI será capaz de detectar los puntos de interés, mientras que un intervalo de credibilidad lo ignoraría al asumir simetría.
+- [V] La principal ventaja de HPDI frente a un intervalo de credibilidad es que si la posterior no distribuye de forma normal, el HPDI será capaz de detectar los puntos de interés, mientras que un intervalo de credibilidad lo ignoraría al asumir simetría.
 
-> Respuesta Aqui
+>  - Falso, ya que esta si es util en un estudio, ya que esta ocupa la informacion previa para saber lo que se necesita sobre una proposicion incierta, ya que se tiene conocimiento previo y un modelo matematico que lo describe, aparte a medida que se obtiene nueva informacion, esta se va actualizando.
 
 
 #### **Pregunta 9** 
@@ -148,7 +157,12 @@ Suponga que usted esta intentando determinar la especie de un panda que que tien
 Se administra el test y se obtiene un resultado positivo a la especie $1$. Sin utilizar la información en $D$ calcule la probabilidad posterior de que su panda sea de la especie $1$. Repita sus cálculos utilizando la información recopilada en $D$. ¿En que varían sus resultados?
 
 
-> Respuesta Aqui
+>a)  P(\theta = 1| D = 2) = \frac{P(D=2 | \theta = 1)P(\theta =1)}{P(D=2)} = \frac{0.1*0.5}{0.1*0.5 + 0.2*0.5}= \frac{1}{3}=0.333 
+
+Dado la respuesta anterior, calculamos la posterior usando prior y likelihood.
+Likelihood = P(D=1|\theta = 1) = \frac{9}{10}
+Posterior = \frac{1}{3} *\frac{9}{10} = 0.3
+De lo anterior podemos concluir que dado que nuestro likelihood es grande, entonces nuestra nueva probabilidad de que pertenezca a la especie 1 baja a 0.3.
 
 
 ---
@@ -199,6 +213,31 @@ Las primeras dos preguntas de esta tarea tienen como objetivo introducirlos en l
 Considere el dataset "moneda.csv" donde se encuentran los resultados de un experimento lanzando una moneda, el objetivo de esta pregunta es estudiar mediante técnicas de inferencia Bayesiana el valor de la probabilidad de que salga cara, representado por el valor $1$. Puede usar la librerira rethinking durante toda esta pregunta (si lo desea).
 
 ```{r}
+# Análisis bayesiano
+library(rethinking)
+
+dataMoneda <- read.csv("moneda.csv", header = TRUE)
+graficos_grid <- function(num_tiros){
+  p_grid <- seq(from=0, to=1, length.out=num_tiros)
+  lanzamientos <- dataMoneda[2:11,]
+  prior <- rep(1,num_tiros)
+  #e <- sum(p_grid)
+  e <- sum(lanzamientos)
+  likelihood <- dbinom(e, size = 10, prob = p_grid)
+  unstd.posterior <- likelihood*prior
+  posterior <- unstd.posterior/sum(unstd.posterior)
+  plot(p_grid, posterior, type ="b", xlab="Probability", ylab="posterior probability")
+  mtext=("Nro de tiros")
+    
+}
+
+graficos_grid(10)
+graficos_grid(50)
+graficos_grid(100)
+graficos_grid(250)
+graficos_grid(500)
+graficos_grid(998)
+#Analizando los graficos vemos como se achicala curva mostrando que cada vez tiende mas a la probabilidad real de que de cara
 dataMoneda <- read.csv("moneda.csv", header = TRUE)
 
 graph_lap <- function(num_tiros){
@@ -211,9 +250,9 @@ graph_lap <- function(num_tiros){
       W ~ dbinom(W+L, p),
       p ~ dunif(0,1)
     ),
-    (data = list = (L=l)))
+    data=list(W=w, L=l))
   precis(globe.qa)
-  sample.quap <- extrac.samples(globe.qa)
+  sample.quap <- extract.samples(globe.qa)
   dens(sample.quap)
 }
 
@@ -223,7 +262,76 @@ graph_lap(50)
 graph_lap(100)
 graph_lap(250)
 graph_lap(500)
-graph_lap(1000)
+graph_lap(999)
+#Mientras mas datos tengo mas se acerca a la posterior
+num_tiros <- 500
+p_grid <- seq(from=0, to=1, length.out=num_tiros)
+lanzamientos <- dataMoneda[2:11,]
+prior <- rep(1,num_tiros)
+e <- sum(lanzamientos)
+likelihood <- dbinom(e, size = 10, prob = p_grid)
+unstd.posterior <- likelihood*prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+
+plot(posterior~p_grid)
+
+samples <- sample(p_grid, prob = posterior, size = 1e5, replace = TRUE)
+dens(samples)
+
+sum1 <- sum(posterior[p_grid<0.4])
+sum2 <- sum(posterior[0.4<p_grid & p_grid<0.7])
+sum3 <- sum(posterior[p_grid>0.7])
+sum1
+sum2
+sum3
+#Los resultados muestran el porcentaje de la probabilidad posterior que esta entre los valores y mencionados y podemos ver claramente que la probabilidad de que p este entre 0 y 0.4 es mayor a los otros 2 por lo que podriamos decir que en base a los primeros 10 lanzamientos la moneda esta cargada, cosa que cambia cuando se aumenta cuando se obtiene mas informacion 
+num_tiros <- 500
+p_grid <- seq(from=0, to=1, length.out=num_tiros)
+lanzamientos <- dataMoneda[2:501,]
+prior <- rep(1,num_tiros)
+e <- sum(lanzamientos)
+likelihood <- dbinom(e, size = 500, prob = p_grid)
+unstd.posterior <- likelihood*prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+
+plot(posterior~p_grid)
+
+samples <- sample(p_grid, prob = posterior, size = 1e5, replace = TRUE)
+dens(samples)
+
+sum1 <- sum(posterior[p_grid<0.4])
+sum2 <- sum(posterior[0.4<p_grid & p_grid<0.7])
+sum3 <- sum(posterior[p_grid>0.7])
+sum1
+sum2
+sum3
+num_tiros <- 500
+p_grid <- seq(from=0, to=1, length.out=num_tiros)
+lanzamientos <- dataMoneda[2:11,]
+prior <- rep(1,num_tiros)
+e <- sum(lanzamientos)
+likelihood <- dbinom(e, size = 10, prob = p_grid)
+unstd.posterior <- likelihood*prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+
+plot(posterior~p_grid)
+
+samples <- sample(p_grid, prob = posterior, size = 1e5, replace = TRUE)
+#dens(samples)
+
+sum1 <- sum(posterior[p_grid<0.4])
+sum2 <- sum(posterior[0.4<p_grid & p_grid<0.7])
+sum3 <- sum(posterior[p_grid>0.7])
+
+PI(samples, prob=0.5)
+PI(samples, prob=0.75)
+PI(samples, prob=0.95)
+
+
+HPDI(samples, prob=0.5)
+HPDI(samples, prob=0.75)
+HPDI(samples, prob=0.95) #siempre va a contener el valor maximo
+
 ```
 
 
@@ -253,6 +361,52 @@ Un conjunto de carteros aburridos de las mordidas de perros ha decidido realizar
 ```{r, eval=FALSE}
 df = read.csv("no+mordidas.csv")
 head(df)
+
+Vict <- sum(df$bites_month_1) + sum(df$bites_month_2)
+defe <- sum(df$bites_month_1 == 0) + sum(df$bites_month_2==0)
+p_grid<-seq(from=0, to=1, length=500)
+prior<-rep(1, 500)
+likelihood<-dbinom(Vict, size=Vict+defe, prob = p_grid)
+unstd.posterior <- likelihood*prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+maximo<-max(posterior)
+maximo
+
+repl<- rbinom(10000, 500, prob = maximo)
+hist(repl)
+real_bite_count<-NULL
+for(i in 1:length(df$bites_month_1)){
+  real_bite_count<-append(real_bite_count,df$bites_month_1[i]+df$bites_month_2[i])
+}
+hist(real_bite_count)
+
+#Analizando los dos histogramas, notamos que se aleja un poco de los datos reales mostrando una sobre representacion de los carteros que no fueron mordidos en el periodo de 2 meses. Esto se puede entender talvez por pocas opciones (0, 1, 2 mordidas)
+
+
+df = read.csv("no+mordidas.csv")
+head(df)
+df1 <- df[df$bites_month_1=1,]
+df1
+
+Vict <- sum(df1$bites_month_2)
+defe <- sum(df1$bites_month_2==0)
+p_grid<-seq(from=0, to=1, length=500)
+prior<-rep(1, 500)
+likelihood<-dbinom(Vict, size=Vict+defe, prob = p_grid)
+unstd.posterior <- likelihood*prior
+posterior <- unstd.posterior/sum(unstd.posterior)
+maximo<-max(posterior)
+maximo
+
+repl<- rbinom(10000, 500, prob = maximo)
+hist(repl)
+real_bite_count_2<-NULL
+for(i in 1:length(df$bites_month_1)){
+  real_bite_count_2<-append(real_bite_count_2,df1$bites_month_2[i])
+}
+hist(real_bite_count_2)
+
+#Tomando los datos de los que ya fueron mordidos vemos que los graficos se parecen pero no de la manera esperada puesto que la proporcion entre los mordidos por 2da vez y no, no fue la misma. Pensamos que este error se debe a lo mismo la pregunta anterior
 ```
 
 En base a los datos, realice los siguientes puntos:
@@ -263,7 +417,7 @@ En base a los datos, realice los siguientes puntos:
 
 - [ ] Como se comento en el comienzo `bites_month1` contiene las mordidas señaladas por un conjunto de personas en el primer mes. Haciendo uso de `bites_month2`, obtenga la posterior de que una persona que fue mordida en el primer mes, sea mordida nuevamente en el segundo mes. Para esto, se recomienda comenzar buscando los carteros que fueron mordidos el primer mes y en base a estos generar una búsqueda indexada para obtener el número solicitado. Hecho esto, simule ese número carteros mordidos 10.000 veces. De los resultados obtenidos, compare el recuento de carteros mordidos con el recuento real. ¿Cómo se ve el modelo desde este punto de vista?
 
-> Respuesta Aqui
+> 
 
 ---
 
@@ -277,18 +431,18 @@ Usted sabe un dato extra sobre la información, los valores de $\sigma$ en la gr
 - [ ] Modifique el siguiente código que permite realizar una grid approximation para $2$ parámetros. Proponga priors para $\mu$ y $\sigma$, justifique su elección.
 
 
-```r
+```{r, eval=FALSE}
 # Leer información
 data_notas <- read.csv("notas.csv")
 
 # Función para crear likelihood dado mu y sigma
-grid_function <- function(mu,sigma){
-   .... # Funcion de likelihood
+grid_function <- function(mu,sigma){ 
+   dnorm(data_notas$Notas, mu, sigma)
 }
-
+num_points = 102
 # Valores de la grilla
-grid_mu <- ...
-grid_sigma <- ...
+grid_mu <- seq(from=1, to=7, length.out=num_points)
+grid_sigma <- seq(from=0.5, to=1.5, length.out=num_points)
 
 # Se crea la grilla 2d
 data_grid <- expand_grid(grid_mu,grid_sigma)
@@ -301,8 +455,8 @@ data_grid <- unnest(data_grid,cols = c("likelihood"))
 
 
 # Valores de los priors
-prior_mu <- ...
-prior_sigma <-  ...
+prior_mu <- rep(1, num_points)
+prior_sigma <- c(rep(2/3,num_points/2), rep(1/3,num_points/2))
 
 # Se crea la grilla 2d de priors
 prior <- expand_grid(prior_mu,prior_sigma)
@@ -325,7 +479,7 @@ data_grid$posterior <- (data_grid$posterior - min(data_grid$posterior))/(max(dat
 - [ ] Tras haber ejecutado el código de la parte anterior ejecute el siguiente, ¿Que puede decir de los valores de la distribución? Se recomienda hacer modificaciones en el código para realizar un mejor análisis y estudio.
 
 
-```r
+```{r, eval=FALSE}
 # Punto de referencia
 # Se recomienda cambiar estos valores por unos adecuados que le permitan estudiar
 # Los valores de la distribución de mejor manera
@@ -364,7 +518,7 @@ plt
 - [ ] A continuación se presenta un código que permite realizara la distribución dada por sampling from grid approximation ¿Para que sirve este proceso? ¿Que puede deducir del gráfico?
 
 
-```r
+```{r, eval=FALSE}
 # Codificamos los datos
 x <- 1:length(data_grid$posterior)
 
