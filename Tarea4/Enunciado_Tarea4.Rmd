@@ -358,7 +358,7 @@ El objetivo de esta pregunta es comprender el concepto de `sample prediction` vi
 
 Un conjunto de carteros aburridos de las mordidas de perros ha decidido realizar un catastro de mordidas recibidas por los empleados de su empresa en un periodo de dos meses, planeando en base a estos datos realizar inferencia bayesiana. Los datos de las mordidas estas datos por el dataset `no+mordidas.csv`, en donde cada fila representa las mordidas recibidas por diferentes carteros y las columnas señalan si fue mordido o no el cartero en los meses de estudio (notar que si fue mordido sera señalado con un 1, de lo contrario es señalado con un 0). Cabe señalar que un cartero no puede ser mordido mas de una vez al mes, ya que el damnificado recibe licencia por todos los días restantes del mes tras la mordida, reincorporándose el siguiente mes al trabajo.
 
-```{r, eval=FALSE}
+```{r}
 df = read.csv("no+mordidas.csv")
 head(df)
 
@@ -385,7 +385,7 @@ hist(real_bite_count)
 
 df = read.csv("no+mordidas.csv")
 head(df)
-df1 <- df[df$bites_month_1=1,]
+df1 <- df[df$bites_month_1==1,]
 df1
 
 Vict <- sum(df1$bites_month_2)
@@ -518,7 +518,7 @@ plt
 - [ ] A continuación se presenta un código que permite realizara la distribución dada por sampling from grid approximation ¿Para que sirve este proceso? ¿Que puede deducir del gráfico?
 
 
-```{r, eval=FALSE}
+```{r}
 # Codificamos los datos
 x <- 1:length(data_grid$posterior)
 
